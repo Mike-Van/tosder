@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['auth'])->group(function(){
+    Route::resources([
+        'bookings' => 'BookingController',
+        'provinces' => 'ProvinceController',
+        'reviews' => 'ReviewController',
+        'tours' => 'TourController',
+        'tourimages' => 'TourImageController'
+    ]);
+});
