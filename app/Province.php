@@ -11,4 +11,11 @@ class Province extends Model
         'name',
         'imgPath'
     ];
+
+    public function tours(){
+        return $this -> hasMany('App\Tour');
+    }
+    public function guides(){
+        return $this -> hasMany('App\User');
+    }
 }

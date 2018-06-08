@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Province;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+//use Input;
 
 class ProvinceController extends Controller
 {
@@ -15,6 +17,8 @@ class ProvinceController extends Controller
     public function index()
     {
         //
+        $provinces = Province::all();
+        return view('provinces.index', ['provinces' => $provinces]);
     }
 
     /**
@@ -25,6 +29,8 @@ class ProvinceController extends Controller
     public function create()
     {
         //
+        
+        return view('provinces.create');
     }
 
     /**
@@ -36,6 +42,20 @@ class ProvinceController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $image = Input::file('image');
+        $newName = time() . "." . $image->getClientOriginalExtension();
+        $image -> move('photos/provinces', $newName);
+        $imgPath = 'photos/provinces/' . $newName;
+        
+        $province = Province::create([
+            'name' => $request->input('name'),
+            'imgPath' => $imgPath
+        ]);
+        if($province){
+            return redirect()->route('provinces.index')->with('success' , 'Province added successfully');
+        }
+        return back()->withInput()->with('errors', 'Error creating new company');
     }
 
     /**
