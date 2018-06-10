@@ -17,7 +17,7 @@
                 />
 			</div>
 			<div class="input-group mb-3">
-                <img src="/{{ $province->imgPath }}" width="100%" height="100%"/>
+                <img src="/storage/{{ $province->imgPath }}" width="100%" height="100%"/>
 				<div class="custom-file">					
 					<label class="custom-file-label" for="image">Update Province Image</label>
 					<input type="file" class="custom-file-input" id="image" name="image">

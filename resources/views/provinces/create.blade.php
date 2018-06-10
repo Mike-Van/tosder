@@ -23,7 +23,8 @@
 			</div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="Add Province"/>
-			</div>			
+            </div>		
         </form>
+        
     </div>
 @endsection

@@ -4,7 +4,7 @@
 <div class="col-md-8 offset-md-2">
     <br/>
     <div>
-        <a href="provinces/create" class="btn btn-primary">Add New Province</a>
+        <a href="{{ route('provinces.create') }}" class="btn btn-primary">Add New Province</a>
     </div>
     <br/>
     <table class="table">
@@ -21,7 +21,7 @@
                 <tr>
                     <th scope="row">{{ $province->id }}</th>
                     <td>{{ $province->name }}</td>
-                    <td><img src="../{{ $province->imgPath }}" width="200px"/></td>
+                    <td><img src="/storage/{{ $province->imgPath }}" width="200px"/></td>
                     <td>
                         <a href="provinces/{{ $province->id }}/edit" class="btn btn-warning">Edit</a> | 
                         <a

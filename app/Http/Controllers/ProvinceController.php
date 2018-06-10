@@ -6,6 +6,7 @@ use App\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 //use Input;
 
 class ProvinceController extends Controller
@@ -31,6 +32,8 @@ class ProvinceController extends Controller
     {
         //
         
+        //dd($url);
+
         return view('provinces.create');
     }
 
@@ -42,12 +45,15 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        //    
+        //
+        /*    
         $image = Input::file('image');
         $newName = time() . "." . $image->getClientOriginalExtension();
         $image -> move('photos/provinces', $newName);
         $imgPath = 'photos/provinces/' . $newName;
-        
+        */
+        $imgPath = Storage::putFile('public/photos/provinces', $request->file('image'));
+        $imgPath = 'photos/provinces/' . basename($imgPath);
         $province = Province::create([
             'name' => $request->input('name'),
             'imgPath' => $imgPath
@@ -95,10 +101,9 @@ class ProvinceController extends Controller
         
         $provinceUpdate = null;
         if(Input::hasFile('image')){
-            $image = Input::file('image');
-            $newName = time() . "." . $image->getClientOriginalExtension();
-            $image -> move('photos/provinces', $newName);
-            $imgPath = 'photos/provinces/' . $newName;
+            Storage::delete("public/$province->imgPath"); //delete old image
+            $imgPath = Storage::putFile('public/photos/provinces', $request->file('image'));
+            $imgPath = 'photos/provinces/' . basename($imgPath);
 
             $provinceUpdate = Province::where('id', $province->id)->update([
                 'name' => $request->input('name'),
