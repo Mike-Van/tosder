@@ -7,6 +7,7 @@ use App\TourImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
@@ -63,12 +64,10 @@ class TourController extends Controller
             ]);
             
             if($tour){
-                return $request->file('image');
                 $images = $request->file('image');
                 foreach ($images as $image) {
-                    $newName = time() . "." . $image->getClientOriginalExtension();
-                    $image -> move('photos/tours', $newName);
-                    $imgPath = 'photos/tours/' . $newName;
+                    $imgPath = Storage::putFile('public/photos/tours', $image);
+                    $imgPath = 'photos/tours/' . basename($imgPath);
 
                     $tourImage = TourImage::create([
                         'name' => $request->input('name'),
@@ -105,6 +104,9 @@ class TourController extends Controller
     public function edit(Tour $tour)
     {
         //
+        $tour = Tour::find($tour->id);
+        $tourImages = TourImage::where('tour_id', $tour->id)->get();
+        return view('tours.edit', ['tour' => $tour, 'tourImages' => $tourImages]);
     }
 
     /**

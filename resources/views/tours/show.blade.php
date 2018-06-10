@@ -5,7 +5,7 @@
         <h1> {{ $tour->name }} </h1>
             @foreach($tourImages as $tourImage)
                 <div class="form-group">
-                    <img src="/{{ $tourImage->path }}" width="100%" height="100%" />
+                    <img src="/storage/{{ $tourImage->path }}" width="100%" height="100%" />
                 </div>
             @endforeach
             <div class="form-group">
