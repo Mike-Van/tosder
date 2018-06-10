@@ -126,14 +126,14 @@ class ProvinceController extends Controller
     public function destroy(Province $province)
     {
         //
-        /*
+        
         $findProvince = DB::table('provinces')->where('id', $province->id)->delete();
         
         if($findProvince){
             return redirect()->route('provinces.index')->with('success', 'Province deleted successfully');
         }
         return back()->with('error', 'Province could not be deleted');
-        */
-        var_dump($province->id);
+        
+        //var_dump($province->id);
     }
 }

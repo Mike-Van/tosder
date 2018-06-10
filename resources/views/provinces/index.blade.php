@@ -31,12 +31,12 @@
                                   var result = confirm('Are you sure you wish to delete this province?');
                                       if( result ){
                                               event.preventDefault();
-                                              document.getElementById('delete-form').submit();
+                                              document.getElementById('delete-form-{{$province->id}}').submit();
                                       }
                                 ">Delete
                         </a>
 
-                        <form id="delete-form" action="{{route('provinces.destroy', $province->id)}}" method="POST" style="display: none;">
+                        <form id="delete-form-{{$province->id}}" action="{{route('provinces.destroy', $province->id)}}" method="POST" style="display: none;">
                             <input type="hidden" name="_method" value="delete">
                             {{ csrf_field() }}
                         </form>
