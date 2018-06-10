@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Tour;
+use App\TourImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class TourController extends Controller
 {
@@ -15,6 +18,7 @@ class TourController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -25,6 +29,7 @@ class TourController extends Controller
     public function create()
     {
         //
+        return view('tours.create');
     }
 
     /**
@@ -36,6 +41,45 @@ class TourController extends Controller
     public function store(Request $request)
     {
         //
+        /*
+        $image = Input::file('image');
+        $newName = time() . "." . $image->getClientOriginalExtension();
+        $image -> move('photos/provinces', $newName);
+        $imgPath = 'photos/provinces/' . $newName;
+        */
+        if($request->hasFile('image'))
+        {
+            $tour = Tour::create([
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'category' => $request->input('category'),
+                'overview' => $request->input('overview'),
+                'activity' => $request->input('activity'),
+                'exclusion' => $request->input('exclusion'),
+                'inclusion' => $request->input('inclusion'),
+                'policies' => $request->input('policies'),
+                'guide_id' => 1,
+                'province_id' => 1
+            ]);
+            
+            if($tour){
+                return $request->file('image');
+                $images = $request->file('image');
+                foreach ($images as $image) {
+                    $newName = time() . "." . $image->getClientOriginalExtension();
+                    $image -> move('photos/tours', $newName);
+                    $imgPath = 'photos/tours/' . $newName;
+
+                    $tourImage = TourImage::create([
+                        'name' => $request->input('name'),
+                        'path' => $imgPath,
+                        'tour_id' => $tour->id  
+                    ]);
+                }
+                return redirect()->route('tours.show',['tour' => $tour->id])->with('success' , 'Tour added successfully');
+            }
+        }
+        return back()->withInput()->with('errors', 'Error adding new tour');
     }
 
     /**
@@ -47,6 +91,9 @@ class TourController extends Controller
     public function show(Tour $tour)
     {
         //
+        $tour = Tour::find($tour->id);
+        $tourImages = TourImage::where('tour_id', $tour->id)->get();
+        return view('tours.show', ['tour' => $tour, 'tourImages' => $tourImages]);
     }
 
     /**
