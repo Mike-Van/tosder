@@ -189,10 +189,14 @@ class TourController extends Controller
     {
         //
         $findTour = DB::table('tours')->where('id', $tour->id)->delete();
-        
-        if($findTour){
-            return redirect()->route('tours.index')->with('success', 'Province deleted successfully');
+        $oldImages = TourImage::where('tour_id', $tour->id)->get();
+        foreach($oldImages as $oldImage){
+            Storage::delete("public/$oldImage->path");
         }
-        return back()->with('error', 'Province could not be deleted');
+        TourImage::where('tour_id', $tour->id)->delete();
+        if($findTour){
+            return redirect()->route('tours.index')->with('success', 'Tour deleted successfully');
+        }
+        return back()->with('error', 'Tour could not be deleted');
     }
 }
