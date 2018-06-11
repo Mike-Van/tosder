@@ -5,6 +5,7 @@
         <h1> Editing Tour </h1>
         <form method="post" action="{{ route('tours.update', $tour->id) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <input name="_method" value="PUT" type="hidden">
             <label>Tour Images</label>
             @foreach($tourImages as $tourImage)
                 <div class="form-group">
@@ -59,9 +60,7 @@
                               id="overview"
                               name="overview"
                               rows="10" spellcheck="true"
-                              class="form-control autosize-target text-left">
-                              {{ $tour->overview }}
-                </textarea>
+                              class="form-control autosize-target text-left">{{ $tour->overview }}</textarea>
             </div>
             <div class="form-group">
                 <label for="activity">Activities</label>
@@ -69,9 +68,7 @@
                               id="activity"
                               name="activity"
                               rows="10" spellcheck="true"
-                              class="form-control autosize-target text-left">
-                              {{ $tour->activity }}
-                </textarea>
+                              class="form-control autosize-target text-left">{{ $tour->activity }}</textarea>
             </div>
             <div class="form-group">
                 <label for="inclusion">Inclusions</label>
@@ -79,9 +76,7 @@
                               id="inclusion"
                               name="inclusion"
                               rows="10" spellcheck="true"
-                              class="form-control autosize-target text-left">
-                              {{ $tour->inclusion }}
-                </textarea>
+                              class="form-control autosize-target text-left">{{ $tour->inclusion }}</textarea>
             </div>
             <div class="form-group">
                 <label for="Exclusion">Exclusions</label>
@@ -89,9 +84,7 @@
                               id="exclusion"
                               name="exclusion"
                               rows="10" spellcheck="true"
-                              class="form-control autosize-target text-left">
-                              {{ $tour->exclusion }}
-                </textarea>
+                              class="form-control autosize-target text-left">{{ $tour->exclusion }}</textarea>
             </div>
             <div class="form-group">
                 <label for="policies">Policies</label>
@@ -99,9 +92,7 @@
                               id="policies"
                               name="policies"
                               rows="10" spellcheck="true"
-                              class="form-control autosize-target text-left">
-                              {{ $tour->policies }}
-                </textarea>
+                              class="form-control autosize-target text-left">{{ $tour->policies }}</textarea>
             </div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="Update Tour"/>

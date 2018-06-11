@@ -19,6 +19,7 @@ class TourController extends Controller
     public function index()
     {
         //
+        
 
     }
 
@@ -119,6 +120,63 @@ class TourController extends Controller
     public function update(Request $request, Tour $tour)
     {
         //
+        if($request->hasFile('image'))
+        {
+            $tourUpdate = Tour::where('id', $tour->id)->update([
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'category' => $request->input('category'),
+                'overview' => $request->input('overview'),
+                'activity' => $request->input('activity'),
+                'exclusion' => $request->input('exclusion'),
+                'inclusion' => $request->input('inclusion'),
+                'policies' => $request->input('policies'),
+                'guide_id' => 1,
+                'province_id' => 1
+            ]);
+            
+            if($tourUpdate){
+                $images = $request->file('image');
+                $oldImages = TourImage::where('tour_id', $tour->id)->get();
+                foreach($oldImages as $oldImage){
+                    Storage::delete("public/$oldImage->path");
+                }
+                TourImage::where('tour_id', $tour->id)->delete();
+
+                foreach ($images as $image) {
+                    $imgPath = Storage::putFile('public/photos/tours', $image);
+                    $imgPath = 'photos/tours/' . basename($imgPath);
+
+                    $tourImage = TourImage::create([
+                        'name' => $request->input('name'),
+                        'path' => $imgPath,
+                        'tour_id' => $tour->id  
+                    ]);
+                }
+                $tourImages = TourImage::where('tour_id', $tour->id);
+                return redirect()->route('tours.show',['tour' => $tour, 'tourImages' => $tourImages])->with('success' , 'Tour updated successfully');
+            }
+            return back()->withInput()->with('errors', 'Error updating this tour');
+        }
+        else{
+            $tourUpdate = Tour::where('id', $tour->id)->update([
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'category' => $request->input('category'),
+                'overview' => $request->input('overview'),
+                'activity' => $request->input('activity'),
+                'exclusion' => $request->input('exclusion'),
+                'inclusion' => $request->input('inclusion'),
+                'policies' => $request->input('policies'),
+                'guide_id' => 1,
+                'province_id' => 1
+            ]);
+            if($tourUpdate){
+                $tourImages = TourImage::where('tour_id', $tour->id)->get();
+                return redirect()->route('tours.show',['tour' => $tour, 'tourImages' => $tourImages])->with('success' , 'Tour updated successfully');
+            }
+            return back()->withInput()->with('errors', 'Error updating this tour');
+        }
     }
 
     /**
@@ -130,5 +188,11 @@ class TourController extends Controller
     public function destroy(Tour $tour)
     {
         //
+        $findTour = DB::table('tours')->where('id', $tour->id)->delete();
+        
+        if($findTour){
+            return redirect()->route('tours.index')->with('success', 'Province deleted successfully');
+        }
+        return back()->with('error', 'Province could not be deleted');
     }
 }
