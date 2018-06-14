@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Review;
+use App\Tour;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -24,7 +25,8 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+		//
+		return view('comments.create');
     }
 
     /**
@@ -36,7 +38,30 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $review = Review::create([
+            'customer_name' => $request->input('customer_name'),
+            'details' => $request->input('details'),
+            'rating' => $request->input('rating'),
+            'tour_id' => $request->input('tour_id')
+        ]);
+        if($comment){
+            return back()->with('success', 'Thanks you for your review');
+        }
+        return back()->withInput()->with('errors', 'Errors submitting your review');
+	}
+
+	private function overallRating($tour_id){
+		$tour = Tour::find($tour_id);
+		$reviews = $tour->reviews;
+		$rating = 0;
+		$i = 1;
+		foreach($reviews as $review){
+			$rating += $review->rating;
+			$i++;
+		}
+		$rating = $rating / $i;
+		return $rating;
+	}
 
     /**
      * Display the specified resource.
@@ -44,9 +69,13 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show(Tour $tour)
     {
-        //
+		//
+		$tour = Tour::find($tour -> id);
+		$reviews = $tour -> reviews;
+		$overallRating = overallRating($tour -> id);
+		return view('comments.show', ['reviews' => $reviews, 'overallRating' => $overallRating]);
     }
 
     /**

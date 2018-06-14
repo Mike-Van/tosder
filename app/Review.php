@@ -13,4 +13,8 @@ class Review extends Model
         'rating',
         'tour_id'
     ];
+
+    public function tour(){
+        return $this -> belongsTo('App\Tour');
+    }
 }
