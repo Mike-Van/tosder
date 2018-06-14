@@ -12,4 +12,8 @@ class TourImage extends Model
         'path',
         'tour_id'
     ];
+
+    public function tour(){
+        return $this -> belongsTo('App\Tour');
+    }
 }

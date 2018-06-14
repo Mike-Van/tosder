@@ -16,11 +16,19 @@ class TourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($province_id = null)
     {
-        //
-        
-
+        //guide index page
+        /*
+        if(Auth::check()){
+            $guide_id = Auth::user()->id;
+            $tours = Tour::where('guide_id', $guide_id)->get();
+            return view('tours.index', ['tours' => $tours]);
+        }
+        */
+        //user index page
+        $tours = Tour::where('province_id', $province_id)->get();
+        return view('tours.index', ['tours' => $tours]);
     }
 
     /**
@@ -106,7 +114,7 @@ class TourController extends Controller
     {
         //
         $tour = Tour::find($tour->id);
-        $tourImages = TourImage::where('tour_id', $tour->id)->get();
+        $tourImages = TourImage::where('tour_id', $tour->id)->get();    
         return view('tours.edit', ['tour' => $tour, 'tourImages' => $tourImages]);
     }
 

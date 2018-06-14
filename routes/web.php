@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('tours/index/{province_id?}', 'TourController@index');
 
 //Route::middleware(['auth'])->group(function(){
     Route::resources([
