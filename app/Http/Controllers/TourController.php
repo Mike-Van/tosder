@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tour;
 use App\TourImage;
+use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
@@ -101,10 +102,11 @@ class TourController extends Controller
         //
         $tour = Tour::find($tour->id);
         $tourImages = TourImage::where('tour_id', $tour->id)->get();
-        return view('tours.show', ['tour' => $tour, 'tourImages' => $tourImages]);
+        $reviews = Review::where('tour_id', $tour->id)->get();
+        return view('tours.show', ['tour' => $tour, 'tourImages' => $tourImages, 'reviews' => $reviews]);
     }
 
-    public function overallRating($tour_id){
+    public static function overallRating($tour_id){
 		$tour = Tour::find($tour_id);
 		$reviews = $tour->reviews;
 		$rating = 0;

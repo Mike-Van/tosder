@@ -43,7 +43,7 @@ class ReviewController extends Controller
             'rating' => $request->input('rating'),
             'tour_id' => $request->input('tour_id')
         ]);
-        if($comment){
+        if($review){
             return back()->with('success', 'Thanks you for your review');
         }
         return back()->withInput()->with('errors', 'Errors submitting your review');
