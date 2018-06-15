@@ -104,6 +104,19 @@ class TourController extends Controller
         return view('tours.show', ['tour' => $tour, 'tourImages' => $tourImages]);
     }
 
+    public function overallRating($tour_id){
+		$tour = Tour::find($tour_id);
+		$reviews = $tour->reviews;
+		$rating = 0;
+		$i = 0;
+		foreach($reviews as $review){
+			$rating += $review->rating;
+			$i++;
+		}
+		$rating = $rating / $i;
+		return $rating;
+	}
+
     /**
      * Show the form for editing the specified resource.
      *
