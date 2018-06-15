@@ -24,7 +24,7 @@
                 <tr>
                     <th scope="row">{{ $tour->id }}</th>
                     <td>{{ $tour->name }}</td>
-                    <td><img src="/storage/{{ $tour->latestTourImage->path }}" width="200px"/></td>
+                    <td><img src="/storage/{{ $tour->tourImages[0]->path }}" width="200px"/></td>
                     <td>{{ $tour->price }}</td>
                     <td>{{ \App\Http\Controllers\TourController::overallRating($tour->id) }}</td>
                 </tr>   
