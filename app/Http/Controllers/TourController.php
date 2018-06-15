@@ -28,7 +28,9 @@ class TourController extends Controller
         }
         */
         //user index page
-        $tours = Tour::where('province_id', $province_id)->get();
+        
+        //dd($_GET['province_id']);
+        $tours = Tour::where('province_id', $_GET['province_id'])->get();
         return view('tours.index', ['tours' => $tours]);
     }
 

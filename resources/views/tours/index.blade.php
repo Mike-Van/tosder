@@ -25,9 +25,8 @@
                     <td>{{ $tour->name }}</td>
                     <td><img src="/storage/{{ $tour->tourImages->path }}" width="200px"/></td>
                     <td>{{ $tour->price }}</td>
-                </tr>
-            @endforeach
-            
+                </tr>   
+            @endforeach            
         </tbody>
     </table>
 </div>
