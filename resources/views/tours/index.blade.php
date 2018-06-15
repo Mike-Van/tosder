@@ -16,6 +16,7 @@
             <th scope="col">Name</th>
             <th scope="col">Picture</th>
             <th scope="col">Price</th>
+            <th scope="col">Rating</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +24,9 @@
                 <tr>
                     <th scope="row">{{ $tour->id }}</th>
                     <td>{{ $tour->name }}</td>
-                    <td><img src="/storage/{{ $tour->tourImages->path }}" width="200px"/></td>
+                    <td><img src="/storage/{{ $tour->latestTourImage->path }}" width="200px"/></td>
                     <td>{{ $tour->price }}</td>
+                    <td>{{ \App\Http\Controllers\TourController::overallRating($tour->id) }}</td>
                 </tr>   
             @endforeach            
         </tbody>

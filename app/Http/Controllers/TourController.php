@@ -30,7 +30,8 @@ class TourController extends Controller
         //user index page
         
         //dd($_GET['province_id']);
-        $tours = Tour::where('province_id', $_GET['province_id'])->get();
+        $tours = Tour::with('latestTourImage')->where('province_id', 1)->get();
+        //dd($tours);
         return view('tours.index', ['tours' => $tours]);
     }
 
