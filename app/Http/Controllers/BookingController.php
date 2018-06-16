@@ -25,6 +25,8 @@ class BookingController extends Controller
     public function create()
     {
         //
+        return view('bookings.create');
+
     }
 
     /**
@@ -36,6 +38,35 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         //
+        $tour_price = 80000; //dummpy tour price
+
+        $booking = Booking::create([
+            'customer_name' => $request->input('customer_name'),
+            'customer_phone' => $request->input('customer_phone'),
+            'customer_email' => $request->input('customer_email'),
+            'trip_date' => $request->input('trip_date'),
+            'pick_up' => $request->input('pick_up'),
+            'pax' => $request->input('pax'),
+            'grand_total' => intval($request->input('pax')) * $tour_price,
+            'status' => 'ongoing',
+            'tour_id' => $request->input('tour_id'),
+            'guide_id' => $request->input('guide_id'),
+        ]);
+
+        if($booking){
+            return redirect()->route('bookings.show',['booking' => $booking->id]);
+        }
+        return back()->withInput()->with('errors', 'Error processing your booking');
+    }
+
+    public function cancel($booking_id = null){
+        $bookingUpdate = Booking::where('id', $_GET['booking_id'])
+            ->update([
+                'status' => 'canceled'
+            ]);
+        if($bookingUpdate){
+            echo("success");
+        }
     }
 
     /**
@@ -47,6 +78,8 @@ class BookingController extends Controller
     public function show(Booking $booking)
     {
         //
+        $booking = Booking::find($booking->id);
+        return view('bookings.show', ['booking' => $booking]);
     }
 
     /**

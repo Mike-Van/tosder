@@ -13,9 +13,17 @@ class Booking extends Model
         'customer_email',
         'trip_date',
         'pick_up',
+        'pax',
         'grand_total',
         'status',
         'tour_id',
         'guide_id'
     ];
+
+    public function tour(){
+        return $this -> belongsTo('App\Tour');
+    }
+    public function guide(){
+        return $this -> belongsTo('App\User', 'guide_id', 'id');
+    }
 }

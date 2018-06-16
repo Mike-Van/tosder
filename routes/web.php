@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('bookings/cancel/{booking_id?}', 'BookingController@cancel');
+
 //Route::middleware(['auth'])->group(function(){
     Route::resources([
         'bookings' => 'BookingController',
