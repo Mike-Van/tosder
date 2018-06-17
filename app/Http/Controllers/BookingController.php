@@ -44,7 +44,7 @@ class BookingController extends Controller
             'customer_name' => $request->input('customer_name'),
             'customer_phone' => $request->input('customer_phone'),
             'customer_email' => $request->input('customer_email'),
-            'trip_date' => $request->input('trip_date'),
+            'trip_date' => date_format(date_create($request->input('trip_date')) ,"Y-m-d"),
             'pick_up' => $request->input('pick_up'),
             'pax' => $request->input('pax'),
             'grand_total' => intval($request->input('pax')) * $tour_price,

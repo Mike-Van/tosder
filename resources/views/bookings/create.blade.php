@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-6 offset-md-3">
         <h1> Placing new booking </h1>
         <form method="post" action="{{ route('bookings.store') }}">
             {{ csrf_field() }}
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="trip_date">Trip Date<span class="required">*</span></label>
-                    <input placeholder="mm-dd-yyyy" type="text" class="form-control datepicker" id="trip_date" name="trip_date">
+                    <input data-provide="datepicker" placeholder="mm/dd/yyyy" type="text" class="form-control" id="trip_date" name="trip_date">
             </div>
             <div class="form-group">
                 <label for="pick_up">Pick Up Location<span class="required">*</span></label>
