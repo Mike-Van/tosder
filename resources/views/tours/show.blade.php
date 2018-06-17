@@ -14,9 +14,7 @@
             </div>
             <div class="form-group">
                 <label>Ovewview</label>
-                <div class="input-group">
-                    <p>{{ $tour->overview }}</p>
-                </div>
+                {!! $tour->overview !!}
             </div>
 
             <div class="form-group">

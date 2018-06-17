@@ -57,12 +57,6 @@ class TourController extends Controller
     public function store(Request $request)
     {
         //
-        /*
-        $image = Input::file('image');
-        $newName = time() . "." . $image->getClientOriginalExtension();
-        $image -> move('photos/provinces', $newName);
-        $imgPath = 'photos/provinces/' . $newName;
-        */
         if($request->hasFile('image'))
         {
             $tour = Tour::create([
@@ -148,6 +142,7 @@ class TourController extends Controller
     public function update(Request $request, Tour $tour)
     {
         //
+        //dd($request->input('overview'));
         if($request->hasFile('image'))
         {
             $tourUpdate = Tour::where('id', $tour->id)->update([

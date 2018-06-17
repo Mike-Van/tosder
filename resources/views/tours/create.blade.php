@@ -52,7 +52,7 @@
                                 id="overview"
                                 name="overview"
                                 rows="10" spellcheck="true"
-                                class="form-control autosize-target text-left">
+                                class="form-control autosize-target text-left ckeditor">
                     </textarea>
                 </div>
                 <div class="form-group">
@@ -61,7 +61,7 @@
                                 id="activity"
                                 name="activity"
                                 rows="10" spellcheck="true"
-                                class="form-control autosize-target text-left">
+                                class="form-control autosize-target text-left ckeditor">
                     </textarea>
                 </div>
                 <div class="form-group">
@@ -70,7 +70,7 @@
                                 id="inclusion"
                                 name="inclusion"
                                 rows="10" spellcheck="true"
-                                class="form-control autosize-target text-left">
+                                class="form-control autosize-target text-left ckeditor">
                     </textarea>
                 </div>
                 <div class="form-group">
@@ -79,7 +79,7 @@
                                 id="exclusion"
                                 name="exclusion"
                                 rows="10" spellcheck="true"
-                                class="form-control autosize-target text-left">
+                                class="form-control autosize-target text-left ckeditor">
                     </textarea>
                 </div>
                 <div class="form-group">
@@ -88,7 +88,7 @@
                                 id="policies"
                                 name="policies"
                                 rows="10" spellcheck="true"
-                                class="form-control autosize-target text-left">
+                                class="form-control autosize-target text-left ckeditor">
                     </textarea>
                 </div>
                 <div class="form-group">
