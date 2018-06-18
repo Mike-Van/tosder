@@ -35,4 +35,7 @@ class Tour extends Model
     public function province(){
         return $this -> belongsTo('App\Province');
     }
+    public function latestTourImage(){
+        return $this->hasOne('App\TourImage')->latest();
+    }
 }

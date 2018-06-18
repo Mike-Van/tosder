@@ -28,13 +28,15 @@ class TourController extends Controller
         }
         */
         //user index page
-        
-        //dd($_GET['province_id']);
-        $tours = Tour::with(['tourImages' => function($query){ 
-            $query->first(); 
-        }])->where('province_id', 1)->get();
-        //dd($tours);
-        return view('tours.index', ['tours' => $tours]);
+
+        if(isset($_GET['sortBy']) == false){
+            $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
+            return view('tours.index', ['tours' => $tours, 'province_id' => $province_id]);
+        }
+        else{
+            $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
+            return view('tours.index', ['tours' => $tours, 'province_id' => $province_id]);
+        }
     }
 
     /**
@@ -108,14 +110,17 @@ class TourController extends Controller
     public static function overallRating($tour_id){
 		$tour = Tour::find($tour_id);
 		$reviews = $tour->reviews;
-		$rating = 0;
-		$i = 0;
-		foreach($reviews as $review){
-			$rating += $review->rating;
-			$i++;
-		}
-		$rating = $rating / $i;
-		return $rating;
+		if($reviews->count() != 0){
+            $rating = 0;
+            $i = 0;
+            foreach($reviews as $review){
+                $rating += $review->rating;
+                $i++;
+            }
+            $rating = $rating / $i;
+            return $rating;
+        }
+        return 0;
 	}
 
     /**
