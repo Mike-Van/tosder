@@ -18,4 +18,8 @@ class Booking extends Model
         'tour_id',
         'guide_id'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

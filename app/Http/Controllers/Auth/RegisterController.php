@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Province;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -49,10 +52,22 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'image' => 'max:10240',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'about' => 'string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|string',
+            'province_id' => 'required|integer|exists:provinces,id'
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $provinces = Province::all();
+        return view('auth.register', ['provinces' => $provinces]);
     }
 
     /**
@@ -63,10 +78,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $imgPath = Storage::putFile('public/photos/users', $data('image'));
+        $imgPath = 'photos/users/' . basename($imgPath);
+
         return User::create([
-            'name' => $data['name'],
+            'imgPath' => $imgPath,
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
+            'about' => $data['about'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            'province_id' => $data['province_id'],
         ]);
     }
 }

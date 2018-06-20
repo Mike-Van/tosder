@@ -18,4 +18,8 @@ class Tour extends Model
         'guide_id',
         'province_id'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

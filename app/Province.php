@@ -11,4 +11,8 @@ class Province extends Model
         'name',
         'imgPath'
     ];
+
+    public function user(){
+        return $this->hasMany('App\User');
+    }
 }
