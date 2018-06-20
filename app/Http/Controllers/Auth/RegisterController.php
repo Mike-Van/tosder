@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -60,7 +62,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'role' => 'required|string',
-            'province_id' => 'required|integer|exists:provinces,id'
+            'province_id' => 'required|integer'
         ]);
     }
 
@@ -76,10 +78,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
     protected function create(array $data)
     {
-        $imgPath = Storage::putFile('public/photos/users', $data('image'));
-        $imgPath = 'photos/users/' . basename($imgPath);
+        $imgPath = Storage::putFile('public/photos/users', $data['image']);
+        $imgPath = 'photos/users/' . basename(Storage::putFile('public/photos/users', $data['image']));
 
         return User::create([
             'imgPath' => $imgPath,
