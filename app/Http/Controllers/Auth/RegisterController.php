@@ -62,7 +62,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'role' => 'required|string',
-            'province_id' => 'required|integer'
+            'province_id' => 'required|integer|exists:provinces,id'
         ]);
     }
 
