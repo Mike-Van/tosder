@@ -28,4 +28,5 @@ Route::middleware(['auth'])->group(function(){
         'tours' => 'TourController',
         'tourimages' => 'TourImageController'
     ]);
+    Route::get('bookings/cancel/{booking_id?}', 'BookingController@cancel');
 });
