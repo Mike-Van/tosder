@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::resources([
         'bookings' => 'BookingController',
         'provinces' => 'ProvinceController',
@@ -27,4 +27,4 @@ Route::get('/home', 'HomeController@index')->name('home');
         'tours' => 'TourController',
         'tourimages' => 'TourImageController'
     ]);
-//});
+});
