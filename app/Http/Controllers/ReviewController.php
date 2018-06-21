@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Review;
+use App\Tour;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -24,7 +25,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+		//
     }
 
     /**
@@ -36,7 +37,17 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $review = Review::create([
+            'customer_name' => $request->input('customer_name'),
+            'details' => $request->input('details'),
+            'rating' => $request->input('rating'),
+            'tour_id' => $request->input('tour_id')
+        ]);
+        if($review){
+            return back()->with('success', 'Thanks you for your review');
+        }
+        return back()->withInput()->with('errors', 'Errors submitting your review');
+	}
 
     /**
      * Display the specified resource.
@@ -44,9 +55,9 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show(Tour $tour)
     {
-        //
+		//
     }
 
     /**
