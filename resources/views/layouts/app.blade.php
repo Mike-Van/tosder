@@ -21,8 +21,116 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tosder.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}">
 </head>
 <body>
+    <div class="container-fluid">
+        {{-- header content --}}
+        <header>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <a href="/">
+                        <img src="/image/logo.PNG">
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="index.html" id="home">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4">
+                    @guest
+                        <a href="{{ route('register') }}" class="become">Become our guide</a>
+                    @else
+                        <a href="{{ route('tours.index') }}" class="become">My Workspace</a>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->firstName }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    @endguest
+                </div>
+            </div>
+        </header>
+
+        {{-- body content --}}
+        @yield('content')
+
+        {{-- footer content --}}
+        <footer>
+            <div class="row">
+                <div class="col-6 col-md-4">
+                    <h1 class="bold">FOLLOW
+                        <abbr class="let">US</abbr> ON
+                        <abbr class="let">SOCIAL MEDIA</abbr>
+                    </h1>
+                    <div class="face">
+                        <a href="#" class="book">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="ig">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="you">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="pint">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <img src="image/logo.PNG">
+                    <br>
+                    <span>&copy; 2018 TosDer All right reserved.</span>
+                </div>
+                <div class="col-6 col-md-4">
+                    <h5 class="bold">CURRENCY:</h5>
+                    <form>
+                        <select name="color">
+                            <option value="dollar" selected>USD</option>
+                            <option value="rile">KHR</option>
+                            <option value="bath">BTH</option>
+                            <option value="dong">DON</option>
+                            <option value="sgd">SGD</option>
+                            <option value="yan">YAN</option>
+                        </select>
+                    </form>
+                    <br>
+                    <div class="title">
+                        <span class="lighter">**The
+                            <abbr class="let">PRICE</abbr> is
+                            <abbr class="let">SUBJECTED TO CHANGE</abbr>
+                        </span>
+                        <span class="lighter">according to actual currency value.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+{{--
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -77,6 +185,8 @@
             @yield('content')
         </div>
     </div>
+--}}
+
 
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

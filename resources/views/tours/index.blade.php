@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-md-8 offset-md-2">
     <br/>
-    {{-- 
+    {{--
     <div>
         <a href="{{ route('provinces.create') }}" class="btn btn-primary">Add New Province</a>
     </div>

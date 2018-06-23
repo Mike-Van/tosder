@@ -1,0 +1,162 @@
+haeder img{
+    margin-top: -15px;
+}
+.signin{
+    background-image: url("../image/tour-guide-header.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 435px;
+    filter: brightness(50%);
+    position: relative;
+}
+.namf{
+    position: absolute;
+    top: 10%;
+    left: 33%;
+    line-height: 25px;
+}
+.namf h1{
+    font-weight: bold;
+    color: white;
+    float: right;
+}
+.namf h2{
+    font-weight: bold;
+    color: white;
+    margin-left: -262px;
+}
+.namf form{
+    background-color: #f1f1f2;
+    padding: 20px;
+    margin-top: 3%;
+    margin-left: -260px;
+    width: 90%;
+}
+.namf input{
+    margin-bottom: 8%;
+    width: 49%;
+    border-radius: 3px;
+    border: 1px solid gray;
+    border-top: none;
+}
+.namf textarea{
+    margin-bottom: 8%;
+}
+.namf .suc a{
+    float: right;
+    width: 29%;
+    padding: 5px 8px;
+    background-color: orange;
+    border: none;
+    border-radius: 8%;
+    margin-top: -15%;
+    font-size: 15px;
+}
+.namf h2.or{
+    color: orange;
+}
+.namf a{
+    text-decoration-color: orange;
+    font-size: 27px;
+    font-weight: 550;
+}
+.namf .tel{
+    width: 13%;
+    margin-right: -6px;
+}
+.namf .num{
+    width: 26%;
+}
+.namf .em{
+    width: 230px;
+}
+.namf span{
+    font-weight: lighter;
+    font-size: 9px;
+}
+.namf p{
+    margin-left: -1%;
+    font-size: 14px;
+}
+.namf p,.namf select{
+    display: inline;
+}
+.namf select{
+    margin-bottom: 8%;
+    width: 275px;
+}
+.namf .upload{
+    width: 205%;
+    margin-bottom: -9%;
+}
+.namf .more{
+    position: absolute;
+    top: 305px;
+    right: -265px;
+}
+.main h1{
+    text-align: center;
+    margin-top: 200px;
+    font-weight: bold;
+}
+.main .row .col-6{
+    float: left;
+    width: 33.33%;
+    padding: 0 10px
+}
+.left{
+    width: 40%;
+  }
+
+.middle, .right  {
+    width: 30%;
+}
+.main .row .col-6 img{
+    width: 75px;
+    height: 75px;
+}
+.row .col-6 p{
+    font-size: 28px;
+    margin-top: 10px;
+}
+.row .col-6 span{
+    font-size: 11px;
+    color: gray;
+}
+.loook .row .col img{
+    float: left;
+    border-radius: 50px;
+    border: 3px solid orange;
+    width: 75px;
+    height: 75px;
+}
+.namg{
+    float: left;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+.namh{
+    font-size: 9px;
+    margin-left: 250px;
+    margin-top: 13px;
+}
+.loook{
+    margin-top: 40px;
+}
+.loook .row .column hr {
+    border: 0;
+    border-top: 1px solid #000;
+    width: 71%;
+    margin-left: 84px;
+    margin-right: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.loook .row .column span{
+    padding-left: 12px;
+    font-size: 9px;
+}
+.loook .big{
+    font-size: 30px;
+}

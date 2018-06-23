@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Province;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -11,10 +13,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $provinces = Province::all();
+        //dd($provinces);
+        return view('home', ['provinces' => $provinces]);
     }
 }

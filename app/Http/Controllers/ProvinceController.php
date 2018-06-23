@@ -16,6 +16,11 @@ class ProvinceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -31,7 +36,7 @@ class ProvinceController extends Controller
     public function create()
     {
         //
-        
+
         //dd($url);
 
         return view('provinces.create');
@@ -46,7 +51,7 @@ class ProvinceController extends Controller
     public function store(Request $request)
     {
         //
-        /*    
+        /*
         $image = Input::file('image');
         $newName = time() . "." . $image->getClientOriginalExtension();
         $image -> move('photos/provinces', $newName);
@@ -98,7 +103,7 @@ class ProvinceController extends Controller
     public function update(Request $request, Province $province)
     {
         //
-        
+
         $provinceUpdate = null;
         if(Input::hasFile('image')){
             Storage::delete("public/$province->imgPath"); //delete old image
@@ -115,7 +120,7 @@ class ProvinceController extends Controller
                 'name' => $request->input('name')
             ]);
         }
-        
+
         if($provinceUpdate){
             return redirect()->route('provinces.index')->with('success', 'Province updated successfully!');
         }
@@ -131,14 +136,14 @@ class ProvinceController extends Controller
     public function destroy(Province $province)
     {
         //
-        
+
         $findProvince = DB::table('provinces')->where('id', $province->id)->delete();
-        
+
         if($findProvince){
             return redirect()->route('provinces.index')->with('success', 'Province deleted successfully');
         }
         return back()->with('error', 'Province could not be deleted');
-        
+
         //var_dump($province->id);
     }
 }

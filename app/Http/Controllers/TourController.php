@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Province;
 use App\Tour;
 use App\TourImage;
 use App\Review;
@@ -17,25 +18,30 @@ class TourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     public function index($province_id = null)
     {
         //guide index page
-        /*
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->role == "guide"){
             $guide_id = Auth::user()->id;
             $tours = Tour::where('guide_id', $guide_id)->get();
-            return view('tours.index', ['tours' => $tours]);
+            return view('tours.workspace', ['tours' => $tours]);
         }
-        */
-        //user index page
 
-        if(isset($_GET['sortBy']) == false){
-            $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
-            return view('tours.index', ['tours' => $tours, 'province_id' => $province_id]);
-        }
+        //user index page
         else{
-            $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
-            return view('tours.index', ['tours' => $tours, 'province_id' => $province_id]);
+            if(isset($_GET['sortBy']) == false){
+                $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
+                return view('tours.index', ['tours' => $tours, 'province_id' => $province_id]);
+            }
+            else{
+                $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
+                return view('tours.index', ['tours' => $tours, 'province_id' => $province_id]);
+            }
         }
     }
 
@@ -73,7 +79,7 @@ class TourController extends Controller
                 'guide_id' => 1,
                 'province_id' => 1
             ]);
-            
+
             if($tour){
                 $images = $request->file('image');
                 foreach ($images as $image) {
@@ -83,7 +89,7 @@ class TourController extends Controller
                     $tourImage = TourImage::create([
                         'name' => $request->input('name'),
                         'path' => $imgPath,
-                        'tour_id' => $tour->id  
+                        'tour_id' => $tour->id
                     ]);
                 }
                 return redirect()->route('tours.show',['tour' => $tour->id])->with('success' , 'Tour added successfully');
@@ -133,7 +139,7 @@ class TourController extends Controller
     {
         //
         $tour = Tour::find($tour->id);
-        $tourImages = TourImage::where('tour_id', $tour->id)->get();    
+        $tourImages = TourImage::where('tour_id', $tour->id)->get();
         return view('tours.edit', ['tour' => $tour, 'tourImages' => $tourImages]);
     }
 
@@ -162,7 +168,7 @@ class TourController extends Controller
                 'guide_id' => 1,
                 'province_id' => 1
             ]);
-            
+
             if($tourUpdate){
                 $images = $request->file('image');
                 $oldImages = TourImage::where('tour_id', $tour->id)->get();
@@ -178,7 +184,7 @@ class TourController extends Controller
                     $tourImage = TourImage::create([
                         'name' => $request->input('name'),
                         'path' => $imgPath,
-                        'tour_id' => $tour->id  
+                        'tour_id' => $tour->id
                     ]);
                 }
                 $tourImages = TourImage::where('tour_id', $tour->id);

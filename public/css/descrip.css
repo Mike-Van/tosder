@@ -1,0 +1,142 @@
+header .row .locat {
+    top: -15px;
+    width: 170px;
+    background-color: orange;
+    position: absolute;
+    left: 240px;
+    padding: 1px;
+    padding-left: 11px;
+    font-size: 18px;
+}
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 190px;
+}
+section .row .col-4,section .row .col-6,section .row .col-2{
+    display: inline-block;
+    margin-top: -11px;
+}
+section .row img{
+    width: 100%;
+}
+section .row .col-6{
+    padding-right: 80px;
+}
+section .row .col-4 .low{
+    color: gray;
+    font-size: 12px;
+}
+.lox{
+    margin-left: 25px;
+}
+section .row .col-4 form{
+    margin-top: 15px;
+}
+aside form .row .col-4{
+    font-weight: lighter;
+    padding-left: 0;
+    font-size: 14px;
+    line-height: 2.8;
+}
+aside form .row{
+    margin-left: 0;
+}
+aside form .row .col-8 input{
+    margin-bottom: 10px;
+}
+aside form .book input{
+    width: 21%;
+}
+.book lable{
+    margin-left: 97px;
+}
+.book,.shoq{
+    display: inline;
+}
+.shoq{
+    background-color: orange;
+    padding: 5px 10px;
+}
+.shoq input{
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;    
+    font-style: italic;
+}
+section.fi{
+    margin-top: 40px;
+}
+.col-6 article{
+    font-size: 12px;
+    font-weight: lighter;
+    color: gray;
+    line-height: 2;
+}
+.col-2{
+    padding: 0;
+}
+.colv3 .des{
+    font-weight: lighter;
+    font-size: 12px;
+    margin-top: 8%;
+}
+.col-2 h4 img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid orange;
+}
+.colv3 .review{
+    margin-left: 3%;
+    margin-top: 5%;
+}
+.col-2 form select{
+    width: 100%;
+    margin-bottom: 3%;
+    color: gray;
+}
+.col-2 form input{
+    width: 101%;
+    margin-bottom: 3%;
+}
+.col-2 form textarea{
+    width: 100%;
+    margin-bottom: 3%;
+}
+.col-2 form .submir{
+    width: 41%;
+    padding: 5px 10px;
+    color: white;
+    background-color: orange;
+    border: none;
+    font-weight: bold;
+    margin-left: 59%;
+}
+.col-2 h4{
+    margin-bottom: 3%;
+}
+.col-2 .review i{
+    color: orange;
+}
+.col-2 .review span{
+    color: gray;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 13px;
+}
+.col-2 .comment span{
+    font-size: 14px;
+    font-weight: normal;
+}
+.col-2 .comment h4 i{
+    float: right;
+}
+footer .row .col-6 .title {
+    margin-left: 122px;
+}
+footer .row .col-6 form {
+    margin-top: 10px;
+}
