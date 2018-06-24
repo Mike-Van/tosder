@@ -73,6 +73,16 @@ class BookingController extends Controller
         }
     }
 
+    public function complete($booking_id = null){
+        $bookingUpdate = Booking::where('id', $booking_id)
+            ->update([
+                'status' => 'completed'
+            ]);
+        if($bookingUpdate){
+            return redirect()->back();
+        }
+    }
+
     /**
      * Display the specified resource.
      *

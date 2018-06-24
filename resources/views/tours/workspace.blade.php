@@ -3,6 +3,7 @@
 @section('stylesheet')
     <link rel="stylesheet" href="{{ asset('css/pending.css') }}">
 @endsection
+
 @section('content')
 
     <section>
@@ -26,7 +27,7 @@
                     $i = 1;
                 @endphp
                 @foreach($bookings as $booking)
-                    @if($booking->status != "canceled")
+                    @if($booking->status == "ongoing" )
                         <div class="row heaf">
                             <div class="col-sm-1">
                                 {{ $i++ }}
@@ -41,7 +42,7 @@
                                         <p>{{ $booking->customer_name }}</p>
                                         <p>{{ $booking->pax }}</p>
                                         <p class="completed-btn">
-                                            <a href="">
+                                            <a href="/bookings/complete/{{ $booking->id }}">
                                                 <span class="checked">&#9745;Complete</span>
                                             </a>
                                         </p>
@@ -99,20 +100,20 @@
                         <img src="/storage/{{ $user->imgPath }}" />
 
                     </div>
-                    {{--
-                    <div>
-                        <span class="fa fa-star checked-star"></span>
-                        <span class="fa fa-star checked-star"></span>
-                        <span class="fa fa-star checked-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <i class="lighter">69 Review</i>
-                    </div>
-                    --}}
+
+                    {{--<div>--}}
+                        {{--<span class="fa fa-star checked-star"></span>--}}
+                        {{--<span class="fa fa-star checked-star"></span>--}}
+                        {{--<span class="fa fa-star checked-star"></span>--}}
+                        {{--<span class="fa fa-star"></span>--}}
+                        {{--<span class="fa fa-star"></span>--}}
+                        {{--<i class="lighter">69 Review</i>--}}
+                    {{--</div>--}}
+
                         <i>
                             <h4 class="let bold">About</h4>
                         </i>
-                    {{ $user->about }}
+                        <p>{{ $user->about }}</p>
                     <div class="edit-profile">
                         <a href="#">Edit Your Profile</a>
                     </div>
