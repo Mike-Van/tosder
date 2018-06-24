@@ -64,12 +64,12 @@ class BookingController extends Controller
     }
 
     public function cancel($booking_id = null){
-        $bookingUpdate = Booking::where('id', $_GET['booking_id'])
+        $bookingUpdate = Booking::where('id', $booking_id)
             ->update([
                 'status' => 'canceled'
             ]);
         if($bookingUpdate){
-            echo("success");
+            return redirect()->back();
         }
     }
 

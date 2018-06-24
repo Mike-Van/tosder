@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
+@endsection
+
 @section('content')
 <div class="signin">
 </div>
@@ -14,7 +18,7 @@
         <input type="text" required placeholder="First Name" name="firstName">
         <input type="text" required placeholder="Last Name" name="lastName">
         <br>
-        <input type="text" required class="tel" value="+855">
+        <input type="text" disabled class="tel" value="+855">
         <input type="text" required class="num" placeholder="XXX-XXX" name="phone">
         <input type="text" required class="em" placeholder="Email Address" name="email">
         <br>

@@ -145,7 +145,7 @@ section .row .col-5{
     margin-left: 5px;
 }
 .col-5 .package .row .col img{
-    width:120p; 
+    width:120px;
     height:80px;
 }
 .col-5 .package .row .col p{
@@ -167,7 +167,7 @@ section .row .col-5{
     width: 200px;
     height: 200px;
     margin: 0 auto;
-    text-align: center; 
+    text-align: center;
     margin-bottom: 15px;
 }
 .profile-picture img {
@@ -188,5 +188,5 @@ section .row .col-5{
     border-radius: 5px;
     padding: 8px 20px;
 }
-    
+
 

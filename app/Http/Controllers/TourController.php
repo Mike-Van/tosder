@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use App\Province;
 use App\Tour;
 use App\TourImage;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class TourController extends Controller
 {
@@ -29,9 +31,9 @@ class TourController extends Controller
         if(Auth::check() && Auth::user()->role == "guide"){
             $guide_id = Auth::user()->id;
             $tours = Tour::where('guide_id', $guide_id)->get();
-            return view('tours.workspace', ['tours' => $tours]);
+            $bookings = Booking::where('guide_id', $guide_id)->get();
+            return view('tours.workspace', ['tours' => $tours, 'bookings' => $bookings, 'user' => Auth::user()]);
         }
-
         //user index page
         else{
             if(isset($_GET['sortBy']) == false){

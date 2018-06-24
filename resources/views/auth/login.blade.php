@@ -1,69 +1,41 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="username" class="col-sm-4 col-form-label text-md-right">{{ __('Username') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
-
-                                @if ($errors->has('username'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="signin">
+</div>
+<div class="namf">
+    <h2>Already
+        <abbr class="let">SIGNED UP</abbr>? Log In!</h2>
+    <h2>Let's make you some
+        <abbr class="let">money</abbr>!</h2>
+    <form id="signin" method="POST" action="{{ route('login') }}">
+        @csrf
+        <lable>Username</lable>
+        <br>
+        <input type="text" name="username" placeholder="Input your username here">
+        <br>
+        <lable>Password</lable>
+        <br>
+        <input type="password" name="password" placeholder="Input your password here">
+        <br>
+        <div class="suc">
+            <a href="javascript:{}" onclick="document.getElementById('signin').submit(); return false;">Log In</a>
         </div>
+        <br>
+    </form>
+    <div style="alignment: center">
+        <h2>
+            <abbr class="let">---------------</abbr> OR
+            <abbr class="let">---------------</abbr>
+        </h2>
+        <h2>Get started
+            <abbr class="let">TODAY</abbr>with
+            <abbr class="let">US</abbr>!</h2>
+        <a href="{{ route('register') }}" class="let">SIGN UP NOW!</a>
     </div>
 </div>
 @endsection

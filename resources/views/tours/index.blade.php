@@ -3,13 +3,7 @@
 @section('content')
 <div class="col-md-8 offset-md-2">
     <br/>
-    {{--
-    <div>
-        <a href="{{ route('provinces.create') }}" class="btn btn-primary">Add New Province</a>
-    </div>
-    --}}
-
-    <form method="get" action="/tours/{{ $province_id }}">
+    <form method="get" action="/tours/index/{{ $province_id }}">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="category">Category</label>
@@ -35,7 +29,7 @@
             <td>{{ $tour->name }}</td>
             <td><img src="/storage/{{ $tour->latestTourImage->path }}" width="200px"/></td>
             <td>{{ $tour->price }}</td>
-            <td>{{ \App\Http\Controllers\TourController::overallRating($tour->id) }}</td>
+            <td>{{ number_format(floatval(\App\Http\Controllers\TourController::overallRating($tour->id)), 1) }}</td>
         </tr>
         @endif
     @endforeach
@@ -47,7 +41,7 @@
                 <td>{{ $tour->name }}</td>
                 <td><img src="/storage/{{ $tour->latestTourImage->path }}" width="200px"/></td>
                 <td>{{ $tour->price }}</td>
-                <td>{{ \App\Http\Controllers\TourController::overallRating($tour->id) }}</td>
+                <td>{{ number_format(floatval(\App\Http\Controllers\TourController::overallRating($tour->id)), 1) }}</td>
             </tr>
         @endif
     @endforeach
@@ -59,7 +53,7 @@
                 <td>{{ $tour->name }}</td>
                 <td><img src="/storage/{{ $tour->latestTourImage->path }}" width="200px"/></td>
                 <td>{{ $tour->price }}</td>
-                <td>{{ \App\Http\Controllers\TourController::overallRating($tour->id) }}</td>
+                <td>{{ number_format(floatval(\App\Http\Controllers\TourController::overallRating($tour->id)), 1) }}</td>
             </tr>
         @endif
     @endforeach
@@ -71,7 +65,7 @@
                 <td>{{ $tour->name }}</td>
                 <td><img src="/storage/{{ $tour->latestTourImage->path }}" width="200px"/></td>
                 <td>{{ $tour->price }}</td>
-                <td>{{ \App\Http\Controllers\TourController::overallRating($tour->id) }}</td>
+                <td>{{ number_format(floatval(\App\Http\Controllers\TourController::overallRating($tour->id)), 1) }}</td>
             </tr>
         @endif
     @endforeach
