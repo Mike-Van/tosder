@@ -72,7 +72,7 @@
                         <a href="searched.html">
                             <span class="fa fa-search btn-search"></span>
                         </a>
-                        <a href="info.html">
+                        <a href="{{ route('tours.create') }}">
                             <span class="fa fa-plus"> Add Tour</span>
                         </a>
                     </div>
