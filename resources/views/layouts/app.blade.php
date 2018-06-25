@@ -36,17 +36,26 @@
                     <a href="/">
                         <img src="/image/logo.PNG">
                     </a>
-                    <ul>
-                        <li>
-                            <a href="index.html" id="home">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">About Us</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact Us</a>
-                        </li>
-                    </ul>
+                    @if(isset($onGuest))
+                        <div class="locat">
+                            <a href="/tours/index/{{ $province_id }}">
+                                <i class="fas fa-compass"></i>
+                                <p>&nbsp;{{ $province->name }}</p>
+                            </a>
+                        </div>
+                    @else
+                        <ul>
+                            <li>
+                                <a href="index.html" id="home">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
                 <div class="col-6 col-md-4">
                     @guest
