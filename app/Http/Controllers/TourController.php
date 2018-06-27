@@ -35,13 +35,18 @@ class TourController extends Controller
         }
         //user index page
         else{
-            if(isset($_GET['sortBy']) == false){
-                $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
-                return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
+            if($province_id != null){
+                if(isset($_GET['sortBy']) == false){
+                    $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
+                    return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
+                }
+                else{
+                    $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
+                    return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
+                }
             }
             else{
-                $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
-                return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
+                return view('tours.index');
             }
         }
     }
