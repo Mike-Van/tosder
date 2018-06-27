@@ -8,7 +8,6 @@ use App\Tour;
 use App\TourImage;
 use App\Review;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -78,8 +77,8 @@ class TourController extends Controller
                 'exclusion' => $request->input('exclusion'),
                 'inclusion' => $request->input('inclusion'),
                 'policies' => $request->input('policies'),
-                'guide_id' => 1,
-                'province_id' => 1
+                'guide_id' => Auth::user()->id,
+                'province_id' => Auth::user()->province_id
             ]);
 
             if($tour){
@@ -167,8 +166,8 @@ class TourController extends Controller
                 'exclusion' => $request->input('exclusion'),
                 'inclusion' => $request->input('inclusion'),
                 'policies' => $request->input('policies'),
-                'guide_id' => 1,
-                'province_id' => 1
+                'guide_id' => Auth::user()->id,
+                'province_id' => Auth::user()->province_id
             ]);
 
             if($tourUpdate){
@@ -204,8 +203,8 @@ class TourController extends Controller
                 'exclusion' => $request->input('exclusion'),
                 'inclusion' => $request->input('inclusion'),
                 'policies' => $request->input('policies'),
-                'guide_id' => 1,
-                'province_id' => 1
+                'guide_id' => Auth::user()->id,
+                'province_id' => Auth::user()->province_id
             ]);
             if($tourUpdate){
                 $tourImages = TourImage::where('tour_id', $tour->id)->get();

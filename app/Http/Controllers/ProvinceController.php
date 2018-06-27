@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-//use Input;
 
 class ProvinceController extends Controller
 {
@@ -51,12 +50,6 @@ class ProvinceController extends Controller
     public function store(Request $request)
     {
         //
-        /*
-        $image = Input::file('image');
-        $newName = time() . "." . $image->getClientOriginalExtension();
-        $image -> move('photos/provinces', $newName);
-        $imgPath = 'photos/provinces/' . $newName;
-        */
         $imgPath = Storage::putFile('public/photos/provinces', $request->file('image'));
         $imgPath = 'photos/provinces/' . basename($imgPath);
         $province = Province::create([

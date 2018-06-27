@@ -26,13 +26,14 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /*
     public function create()
     {
         //
         return view('bookings.create');
 
     }
-
+    */
     /**
      * Store a newly created resource in storage.
      *
@@ -42,8 +43,6 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         //
-        $tour_price = 80000; //dummpy tour price
-
         $booking = Booking::create([
             'customer_name' => $request->input('customer_name'),
             'customer_phone' => $request->input('customer_phone'),

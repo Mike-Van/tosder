@@ -62,17 +62,17 @@
                                 <br>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="customer_name" id="">
+                                <input required type="text" name="customer_name" id="">
                                 <br>
-                                <input type="text" name="customer_phone" id="">
+                                <input required type="text" name="customer_phone" id="">
                                 <br>
-                                <input type="text" name="customer_email" id="">
+                                <input required type="text" name="customer_email" id="">
                                 <br>
-                                <input type="text" name="pax" id="">
+                                <input required type="text" name="pax" id="">
                                 <br>
-                                <input type="text" name="trip_date" id="" data-provide="datepicker">
+                                <input required type="text" name="trip_date" id="" data-provide="datepicker">
                                 <br>
-                                <input type="text" name="pick_up" id="">
+                                <input required type="text" name="pick_up" id="">
                                 <br>
                                 <input type="hidden" value="{{ $tour->id }}" name="tour_id">
                                 <input type="hidden" value="{{ $tour->guide->id }}" name="guide_id">
@@ -149,7 +149,7 @@
                 <form method="post" action="{{ route('reviews.store') }}">
                     @csrf
                     <input type="hidden" name="tour_id" value="{{ $tour->id }}" />
-                    <select name="rating">
+                    <select required name="rating">
                         <option value="5" selected>I give this 5 of 5 stars.</option>
                         <option value="4">I give this 4 of 5 stars.</option>
                         <option value="3">I give this 3 of 5 stars.</option>
@@ -157,9 +157,9 @@
                         <option value="1">I give this 1 of 5 star.</option>
                     </select>
                     <br>
-                    <input type="text" name="customer_name" id="" placeholder="Tell us your name">
+                    <input required type="text" name="customer_name" id="" placeholder="Tell us your name">
                     <br>
-                    <textarea name="" id="" rows="5" name="details" placeholder="Summary your experience"></textarea>
+                    <textarea required id="" rows="5" name="details" placeholder="Summary your experience"></textarea>
                     <br>
                     <input class="submir" type="submit" value="Submit">
                 </form>
