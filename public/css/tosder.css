@@ -8,6 +8,16 @@ header #home{
     border-bottom: 2px solid;
     padding-bottom: 6px;
 }
+header #contact{
+    color: orange;
+    border-bottom: 2px solid;
+    padding-bottom: 6px;
+}
+header #about{
+    color: orange;
+    border-bottom: 2px solid;
+    padding-bottom: 6px;
+}
 header{
     background-color: white;
     padding: 5px;

@@ -21,6 +21,12 @@ class HomeController extends Controller
     {
         $provinces = Province::all();
         //dd($provinces);
-        return view('home', ['provinces' => $provinces]);
+        return view('home', ['provinces' => $provinces, 'style' => 'home']);
+    }
+    public function contact(){
+        return view('contact', ['style' => 'contact']);
+    }
+    public function about(){
+        return view('about', ['style' => 'about']);
     }
 }

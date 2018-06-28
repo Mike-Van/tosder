@@ -46,13 +46,25 @@
                     @else
                         <ul>
                             <li>
-                                <a href="index.html" id="home">Home</a>
+                                <a href="{{ route('home') }}"
+                                   @if($style == "home")
+                                   id="home"
+                                   @endif
+                                       >Home</a>
                             </li>
                             <li>
-                                <a href="#">About Us</a>
+                                <a href="{{ route('about') }}"
+                                   @if($style == "about")
+                                   id="home"
+                                   @endif
+                                       >About Us</a>
                             </li>
                             <li>
-                                <a href="#">Contact Us</a>
+                                <a href="{{ route('contact') }}"
+                                   @if($style == "contact")
+                                   id="home"
+                                   @endif
+                                       >Contact Us</a>
                             </li>
                         </ul>
                     @endif

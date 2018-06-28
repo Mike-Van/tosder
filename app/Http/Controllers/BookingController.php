@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Tour;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -43,6 +44,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         //
+        $tour_price = Tour::find($request->input('tour_id'))->price;
         $booking = Booking::create([
             'customer_name' => $request->input('customer_name'),
             'customer_phone' => $request->input('customer_phone'),
