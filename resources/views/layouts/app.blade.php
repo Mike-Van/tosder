@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +25,9 @@
 
     <link rel="stylesheet" href="{{ asset('css/tosder.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}">
-    @yield('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}"> @yield('stylesheet')
 </head>
+
 <body>
     <div class="container-fluid">
         {{-- header content --}}
@@ -37,66 +38,55 @@
                         <img src="/image/logo.PNG">
                     </a>
                     @if(isset($onGuest))
-                        <div class="locat">
-                            <a href="/tours/index/{{ $province_id }}">
-                                <i class="fas fa-compass"></i>
-                                <p>&nbsp;{{ $province->name }}</p>
-                            </a>
-                        </div>
+                    <div class="locat">
+                        <a href="/tours/index/{{ $province_id }}">
+                            <i class="fas fa-compass"></i>
+                            <p>&nbsp;{{ $province->name }}</p>
+                        </a>
+                    </div>
                     @else
-                        <ul>
-                            <li>
-                                <a href="{{ route('home') }}"
-                                   @if($style == "home")
-                                   id="home"
-                                   @endif
-                                       >Home</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('about') }}"
-                                   @if($style == "about")
-                                   id="home"
-                                   @endif
-                                       >About Us</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('contact') }}"
-                                   @if($style == "contact")
-                                   id="home"
-                                   @endif
-                                       >Contact Us</a>
-                            </li>
-                        </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ route('home') }}" @if($style=="home" ) id="home" @endif>Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about') }}" @if($style=="about" ) id="home" @endif>About Us</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}" @if($style=="contact" ) id="home" @endif>Contact Us</a>
+                        </li>
+                    </ul>
                     @endif
                 </div>
                 <div class="col-6 col-md-4">
                     @guest
-                        <a href="{{ route('register') }}" class="become">Become our guide</a>
+                    <a href="{{ route('register') }}" class="become">Become our guide</a>
                     @else
-                        <a href="{{ route('tours.index') }}" class="become">My Workspace</a>
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->firstName }} <span class="caret"></span>
+                    <a href="{{ route('tours.index') }}" class="become">My Workspace</a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" v-pre>
+                        {{ Auth::user()->firstName }}
+                        <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
                     @endguest
                 </div>
             </div>
         </header>
 
-        {{-- body content --}}
-        @yield('content')
-
+        {{-- body content --}} 
+        @yield('content') 
+        
         {{-- footer content --}}
         <footer>
             <div class="row">
@@ -154,11 +144,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
     <script>
-        (function() {
+        (function () {
             $('.datepicker').datepicker({
 
             });
         })
+
     </script>
 </body>
+
 </html>
