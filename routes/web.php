@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('home');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -30,4 +28,5 @@ Route::resources([
 ]);
 Route::get('bookings/cancel/{booking_id?}', 'BookingController@cancel');
 Route::get('bookings/complete/{booking_id?}', 'BookingController@complete');
-Route::get('/tours/index/{province_id?}', 'TourController@index');
+Route::get('{province_id}/tours', 'ProvinceController@tours')->name('allTours');
+Route::post('/', 'ProvinceController@find')->name('findProvince');

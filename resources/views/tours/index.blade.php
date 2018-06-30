@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-6 col-md-4">
                     <h4 class="bold ">What type of tours are you looking for?</h4>
-                    <form class="lighter" style="margin-left:15px" method="get" action="/tours/index/{{ $province_id }}">
+                    <form class="lighter" style="margin-left:15px" method="get" action="{{ route('allTours', $province_id) }}">
                         @csrf
                         <input type="radio" value="Historical and cultural sites" name="sortBy">Historical and cultural sites
                         <br>

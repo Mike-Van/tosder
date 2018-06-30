@@ -24,30 +24,22 @@ class TourController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index($province_id = null)
+    public function index()
     {
         //guide index page
-        if(Auth::check() && Auth::user()->role == "guide"){
-            $guide_id = Auth::user()->id;
-            $tours = Tour::where('guide_id', $guide_id)->get();
-            $bookings = Booking::where('guide_id', $guide_id)->get();
-            return view('tours.workspace', ['tours' => $tours, 'bookings' => $bookings, 'user' => Auth::user()]);
+        if(Auth::check()){
+            if(Auth::user()->role == "guide"){
+                $guide_id = Auth::user()->id;
+                $tours = Tour::where('guide_id', $guide_id)->get();
+                $bookings = Booking::where('guide_id', $guide_id)->get();
+                return view('tours.workspace', ['tours' => $tours, 'bookings' => $bookings, 'user' => Auth::user()]);
+            }
+            elseif(Auth::user()->role == "admin"){
+                return redirect()->route('home');
+            }
         }
-        //user index page
         else{
-            if($province_id != null){
-                if(isset($_GET['sortBy']) == false){
-                    $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
-                    return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
-                }
-                else{
-                    $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
-                    return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
-                }
-            }
-            else{
-                return redirect()->back();
-            }
+            return redirect()->route('login');
         }
     }
 

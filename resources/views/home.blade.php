@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('nav1')
+    id = "home"
+@endsection
+
 @section('content')
 
 <?php
@@ -14,7 +18,8 @@
                 <abbr class="let">TOUR</abbr> today</h1>
             <h1 class="but">But first, tell us
                 <abbr class="let">WHERE</abbr> you're heading</h1>
-            <form method="GET" action="#">
+            <form id="find" method="POST" action="{{ route('findProvince') }}">
+                @csrf
                 <div class="siem">
                     <i class="fas fa-compass"></i>
                     <input style="padding-left:5px" size="66" id="province_id" class="search" list="provinces" name="province_id" placeholder="Siem Reap, Sihanouk Ville...etc or click on location icon to let us locate you"
@@ -26,14 +31,7 @@
                     </datalist>
                 </div>
                 <div class="tour">
-                    <a onclick="searchProvince()" type="button" href="#">Find my tours</a>
-                    <script>
-                        function searchProvince(e){
-                            // e.preventDefault();
-                            let province_id = $("#province_id").val();
-                            window.location.replace("/tours/index/" + province_id);
-                        }
-                    </script>
+                    <a onclick="document.getElementById('find').submit()" type="button" href="#">Find my tours</a>
                     <i class="fas fa-search"></i>
                 </div>
             </form>

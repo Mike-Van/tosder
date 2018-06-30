@@ -39,7 +39,7 @@
                     </a>
                     @if(isset($onGuest))
                     <div class="locat">
-                        <a href="/tours/index/{{ $province_id }}">
+                        <a href="{{ route('allTours', $province_id) }}">
                             <i class="fas fa-compass"></i>
                             <p>&nbsp;{{ $province->name }}</p>
                         </a>
@@ -47,13 +47,13 @@
                     @else
                     <ul>
                         <li>
-                            <a href="{{ route('home') }}" @if($style=="home" ) id="home" @endif>Home</a>
+                            <a href="{{ route('home') }}" @yield('nav1') >Home</a>
                         </li>
                         <li>
-                            <a href="{{ route('about') }}" @if($style=="about" ) id="home" @endif>About Us</a>
+                            <a href="{{ route('about') }}" @yield('nav2')>About Us</a>
                         </li>
                         <li>
-                            <a href="{{ route('contact') }}" @if($style=="contact" ) id="home" @endif>Contact Us</a>
+                            <a href="{{ route('contact') }}" @yield('nav3')>Contact Us</a>
                         </li>
                     </ul>
                     @endif
@@ -62,23 +62,27 @@
                     @guest
                     <a href="{{ route('register') }}" class="become">Become our guide</a>
                     @else
-                    <a href="{{ route('tours.index') }}" class="become">My Workspace</a>
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" v-pre>
-                        {{ Auth::user()->firstName }}
-                        <span class="caret"></span>
-                    </a>
+                        @if(Auth::user()->role == "guide")
+                            <a href="{{ route('tours.index') }}" class="become">My Workspace</a>
+                        @elseif(Auth::user()->role == "admin")
+                            <a href="{{ route('provinces.index') }}" class="become">Province listing</a>
+                        @endif
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" v-pre>
+                                {{ Auth::user()->firstName }}
+                                <span class="caret"></span>
+                            </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
                     @endguest
                 </div>
             </div>

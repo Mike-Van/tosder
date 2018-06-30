@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Province;
+use App\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProvinceController extends Controller
 {
@@ -17,14 +19,35 @@ class ProvinceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['find', 'tours']]);
+    }
+
+    public function find(Request $request){
+        $province = Province::find($request->input('province_id'));
+        return redirect()->route('allTours', $province->id);
+    }
+
+    public function tours($province_id){
+        if(isset($_GET['sortBy']) == false){
+            $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->get();
+            return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
+        }
+        else{
+            $tours = Tour::with('latestTourImage')->where('province_id', $province_id)->where('category', '=', $_GET['sortBy'])->get();
+            return view('tours.index', ['tours' => $tours, 'province_id' => $province_id, 'province' => Province::find($province_id)])->with('onGuest', '1');
+        }
     }
 
     public function index()
     {
         //
-        $provinces = DB::table('provinces')->orderBy('id')->get();
-        return view('provinces.index', ['provinces' => $provinces]);
+        if(Auth::check() && Auth::user()->role == "admin"){
+            $provinces = DB::table('provinces')->orderBy('id')->get();
+            return view('provinces.index', ['provinces' => $provinces]);
+        }
+        else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -35,10 +58,12 @@ class ProvinceController extends Controller
     public function create()
     {
         //
-
-        //dd($url);
-
-        return view('provinces.create');
+        if(Auth::check() && Auth::user()->role == "admin"){
+            return view('provinces.create');
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -82,8 +107,13 @@ class ProvinceController extends Controller
     public function edit(Province $province)
     {
         //
-        $province = Province::find($province->id);
-        return view('provinces.edit', ['province'=>$province]);
+        if(Auth::check() && Auth::user()->role == "admin"){
+            $province = Province::find($province->id);
+            return view('provinces.edit', ['province'=>$province]);
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -129,14 +159,16 @@ class ProvinceController extends Controller
     public function destroy(Province $province)
     {
         //
+        if(Auth::check() && Auth::user()->role == "admin"){
+            $findProvince = DB::table('provinces')->where('id', $province->id)->delete();
 
-        $findProvince = DB::table('provinces')->where('id', $province->id)->delete();
-
-        if($findProvince){
-            return redirect()->route('provinces.index')->with('success', 'Province deleted successfully');
+            if($findProvince){
+                return redirect()->route('provinces.index')->with('success', 'Province deleted successfully');
+            }
+            return back()->with('error', 'Province could not be deleted');
         }
-        return back()->with('error', 'Province could not be deleted');
-
-        //var_dump($province->id);
+        else{
+            return redirect()->back();
+        }
     }
 }

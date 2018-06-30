@@ -1,5 +1,9 @@
 @extends('layouts.app') 
 
+@section('nav3')
+    id = "home"
+@endsection
+
 @section('stylesheet')
     <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
 @endsection 
