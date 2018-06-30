@@ -31,4 +31,3 @@ Route::resources([
 Route::get('bookings/cancel/{booking_id?}', 'BookingController@cancel');
 Route::get('bookings/complete/{booking_id?}', 'BookingController@complete');
 Route::get('/tours/index/{province_id?}', 'TourController@index');
-Route::get('/tours/index/{province_id?}', 'TourController@index');

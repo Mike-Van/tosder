@@ -46,7 +46,7 @@ class TourController extends Controller
                 }
             }
             else{
-                return view('tours.index');
+                return redirect()->back();
             }
         }
     }
