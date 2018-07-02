@@ -22,11 +22,11 @@
                 @csrf
                 <div class="siem">
                     <i class="fas fa-compass"></i>
-                    <input style="padding-left:5px" size="66" id="province_id" class="search" list="provinces" name="province_id" placeholder="Siem Reap, Sihanouk Ville...etc or click on location icon to let us locate you"
+                    <input style="padding-left:5px" size="66" id="province_name" class="search" list="provinces" name="province_name" placeholder="Siem Reap, Sihanouk Ville...etc or click on location icon to let us locate you"
                     />
                     <datalist id="provinces">
                         @foreach($provinces as $province)
-                            <option value="{{ $province->id }}">{{ $province->name }}</option>
+                            <option value="{{ $province->name }}"></option>
                         @endforeach
                     </datalist>
                 </div>

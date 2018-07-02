@@ -23,7 +23,7 @@ class ProvinceController extends Controller
     }
 
     public function find(Request $request){
-        $province = Province::find($request->input('province_id'));
+        $province = Province::where('name', $request->input('province_name'))->first();
         return redirect()->route('allTours', $province->id);
     }
 
