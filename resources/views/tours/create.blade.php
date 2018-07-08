@@ -16,52 +16,51 @@
             </h2>
             <form id="create" method="post" action="{{ route('tours.store') }}" enctype="multipart/form-data">
                 @csrf
-                <lable class="let">Tour Name</lable>
+                <lable class="let fonts">Tour Name</lable>
                 <br>
                 <input type="text" name="name" placeholder="Tell your clients the name of this tour">
+                <br><br>
+                <lable class="let fonts">Upload tour images</lable>
                 <br>
-                <lable class="let">Upload tour images</lable>
+                <input class="load" type="file" id="image" name="image[]" multiple required>
+                <br><br>
+                <lable class="let fonts" for="category">Category</lable>
                 <br>
-                <input type="file" id="image" name="image[]" multiple required>
-                <br>
-                <lable class="let" for="category">Category</lable>
-                <select id="category" name="category" required>
+                <select class="cate" id="category" name="category" required>
                     <option value="Historical and cultural sites" selected>Historical and cultural sites</option>
                     <option value="Natural and wilderness site">Natural and wilderness site</option>
                     <option value="Chilling out and nightlife">Chilling out and nightlife</option>
                     <option value="Others">Others</option>
                 </select>
-                <br>
-                <lable class="let">Price</lable>
+                <br><br>
+                <lable class="let fonts">Price</lable>
                 <br>
                 <input type="text" name="price" placeholder="How much will you be charging your clients?">
                 <br>
                 <br>
-                <lable class="let">Overview</lable>
+                <lable class="let fonts">Overview</lable>
                 <br>
                 <textarea name="overview" class="ckeditor" placeholder="Tell your clients the general overview of this tour" name="" id="" cols="30" rows="5"></textarea>
                 <br>
-                <br>
-                <lable class="let">Activities</lable>
+                <lable class="let fonts">Activities</lable>
                 <br>
                 <textarea name="activity" class="ckeditor" placeholder="What are some exciting things that you expect your clients to experience?" name="" id="" cols="30"
                           rows="5"></textarea>
                 <br>
-                <br>
                 <div class="plus">
                     <div class="l">
-                        <lable class="let">Inclusion</lable>
+                        <lable class="let fonts">Inclusion</lable>
                         <br>
                         <textarea class="ckeditor" name="inclusion" placeholder="What are included in the charged fees?" name="" id="" cols="30" rows="5"></textarea>
                     </div>
                     <div class="r">
-                        <lable class="let">Exclusion</lable>
+                        <lable class="let fonts">Exclusion</lable>
                         <br>
                         <textarea class="ckeditor" name="exclusion" placeholder="What are exclued from the charged fees?" name="" id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
                 <br>
-                <lable class="let">Additional Policies</lable>
+                <lable class="let fonts">Additional Policies</lable>
                 <br>
                 <textarea name="policies" placeholder="What are some information that you want to inform your clients before they book this tour?" name=""
                           id="" cols="30" rows="5" class="ckeditor"></textarea>

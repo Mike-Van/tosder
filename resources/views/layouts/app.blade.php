@@ -74,7 +74,7 @@
                                 <i class="caret"></i>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="padding: 0;">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="padding: 0;z-index: 100">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
