@@ -35,16 +35,16 @@ section .row .col-4 form{
     margin-top: 15px;
 }
 aside form .row .col-4{
+    padding: 0;
     font-weight: lighter;
-    padding-left: 0;
     font-size: 14px;
     line-height: 2.8;
 }
-aside form .row{
-    margin-left: 0;
+.col-4 .lighter label {
+    margin-bottom: 10px;
 }
 aside form .row .col-8 input{
-    margin-bottom: 10px;
+    margin-bottom: 19px;
 }
 aside form .book input{
     width: 21%;

@@ -78,7 +78,7 @@
                     </div>
                     <div class="row">
                         @foreach($tours as $tour)
-                            <a href="{{ route('tours.edit', $tour->id) }}">
+                            <a href="{{ route('tours.edit', $tour->id) }}" style="margin-left: 15px;">
                                 <div class="col">
                                     <img src="/storage/{{ $tour->latestTourImage->path }}" />
                                     <p>{{ $tour->name }}

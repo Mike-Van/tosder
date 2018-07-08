@@ -23,9 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('role')->default('guide');
-            $table->integer('province_id')->unsigned();
-
-            $table->foreign('province_id')->references('id')->on('provinces');
+            
             $table->rememberToken();
             $table->timestamps();
         });

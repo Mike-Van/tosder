@@ -6,6 +6,15 @@
 
 @section('content')
 <div class="signin">
+    <div class="filter">
+    </div>
+        <img src="../image/tour-guide-header.jpg" />
+    <div class="more">
+        <h1 style="margin-bottom:-10px">Find more
+            <abbr class="let">clients </abbr>with us.</h1>
+        <h1>Be our
+            <abbr class="let">guide </abbr>to earn extra.</h1>
+    </div>
 </div>
 <div class="namf">
     <h2>
@@ -19,7 +28,7 @@
         <input type="text" required placeholder="Last Name" name="lastName">
         <br>
         <input type="text" disabled class="tel" value="+855">
-        <input type="text" required class="num" placeholder="XXX-XXX" name="phone">
+        <input type="text" required class="num" placeholder="XX-XXX-XXX" name="phone">
         <input type="text" required class="em" placeholder="Email Address" name="email">
         <br>
         <p>I'll operate in</p>
@@ -34,9 +43,9 @@
         </div>
         <textarea required placeholder="Tell us something about yourself." name="about" id="" cols="27" rows="5"></textarea>
         <br>
-        <input type="text" required placeholder="Username" name="username">
-        <input type="password" required placeholder="Password" name="password">
-        <input type="password" required placeholder="Confirm Password" name="password_confirmation">
+        <input type="text" required placeholder="Username" name="username"><br>
+        <input type="password" required placeholder="Password" name="password"><br>
+        <input style="margin-bottom: 15px;" type="password" required placeholder="Confirm Password" name="password_confirmation">
         <br>
         <span>*** By clicking
                 <abbr title="" class="let">"Sign Up"</abbr>, you had read and
@@ -49,12 +58,7 @@
         </div>
         <br>
     </form>
-    <div class="more">
-        <h1 style="margin-bottom:-10px">Find more
-            <abbr class="let">clients </abbr>with us.</h1>
-        <h1>Be our
-            <abbr class="let">guide </abbr>to earn extra.</h1>
-    </div>
+    
 </div>
 <div class="main">
     <h1>Why
@@ -95,7 +99,7 @@
                 <img src="image/Koala.jpg" alt="">
                 <div class="let namg">Mike Van</div>
                 <div class="namh lighter">*joined 2 years ago</div>
-                <hr>
+                <hr><br>
                 <span>"Being tour guide for Tos
                         <abbr class="let">Der</abbr>, was the best decision i ever made. I can now earn more money doing what i love"</span>
                 <br>
@@ -103,7 +107,7 @@
                 <img src="image/Koala.jpg" alt="">
                 <div class="let namg">Mike Van</div>
                 <div class="namh lighter">*joined 2 years ago</div>
-                <hr>
+                <hr><br>
                 <span>"Being tour guide for Tos
                         <abbr class="let">Der</abbr>, was the best decision i ever made. I can now earn more money doing what i love"</span>
             </div>
@@ -111,7 +115,7 @@
                 <img src="image/Koala.jpg" alt="">
                 <div class="let namg">Mike Van</div>
                 <div class="namh lighter">*joined 2 years ago</div>
-                <hr>
+                <hr><br>
                 <span>"Being tour guide for Tos
                         <abbr class="let">Der</abbr>, was the best decision i ever made. I can now earn more money doing what i love"</span>
                 <br>
@@ -119,7 +123,7 @@
                 <img src="image/Koala.jpg" alt="">
                 <div class="let namg">Mike Van</div>
                 <div class="namh lighter">*joined 2 years ago</div>
-                <hr>
+                <hr><br>
                 <span>"Being tour guide for Tos
                         <abbr class="let">Der</abbr>, was the best decision i ever made. I can now earn more money doing what i love"</span>
             </div>

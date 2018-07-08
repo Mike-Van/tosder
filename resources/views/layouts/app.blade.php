@@ -25,7 +25,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/tosder.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}"> @yield('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}"> 
+    @yield('stylesheet')
 </head>
 
 <body>
@@ -58,7 +59,7 @@
                     </ul>
                     @endif
                 </div>
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-4" style="margin: 0; padding: 0; text-align: right;">
                     @guest
                     <a href="{{ route('register') }}" class="become">Become our guide</a>
                     @else
@@ -70,10 +71,10 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" v-pre>
                                 {{ Auth::user()->firstName }}
-                                <span class="caret"></span>
+                                <i class="caret"></i>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="padding: 0;">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -95,33 +96,36 @@
         <footer>
             <div class="row">
                 <div class="col-6 col-md-4">
-                    <h1 class="bold">FOLLOW
+                    <h1 style="font-weight: bold;">
+                        FOLLOW
                         <abbr class="let">US</abbr> ON
                         <abbr class="let">SOCIAL MEDIA</abbr>
                     </h1>
                     <div class="face">
                         <a href="#" class="book">
-                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-facebook fa-3x"></i>
                         </a>
-                        <a href="#" class="ig">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                        <div style="display: inline-block">
+                            <a href="#" class="ig">
+                                <i class="fab fa-instagram fa-3x"></i>
+                            </a>
+                        </div>
                         <a href="#" class="you">
-                            <i class="fab fa-youtube"></i>
+                            <i class="fab fa-youtube fa-3x"></i>
                         </a>
                         <a href="#" class="pint">
-                            <i class="fab fa-pinterest"></i>
+                            <i class="fab fa-pinterest fa-3x"></i>
                         </a>
                     </div>
                 </div>
-                <div class="col-6 col-md-4">
-                    <img src="/image/logo.PNG">
+                <div class="col-6 col-md-4" style="text-align: center;">
+                    <img src="image/logo.PNG">
                     <br>
-                    <span>&copy; 2018 TosDer All right reserved.</span>
+                    <h3>&copy; 2018 TosDer All right reserved.</h3>
                 </div>
-                <div class="col-6 col-md-4">
-                    <h5 class="bold">CURRENCY:</h5>
-                    <form>
+                <div class="col-6 col-md-4" style="text-align: right;">
+                    <h3 style="display: inline-block; font-weight: bold;">CURRENCY:</h3>
+                    <form style="display: inline-block; margin-right: -4px;">
                         <select name="color">
                             <option value="dollar" selected>USD</option>
                             <option value="rile">KHR</option>
@@ -133,7 +137,8 @@
                     </form>
                     <br>
                     <div class="title">
-                        <span class="lighter">**The
+                        <span class="lighter">
+                            **The
                             <abbr class="let">PRICE</abbr> is
                             <abbr class="let">SUBJECTED TO CHANGE</abbr>
                         </span>

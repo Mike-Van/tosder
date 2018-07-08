@@ -8,22 +8,13 @@ header #home{
     border-bottom: 2px solid;
     padding-bottom: 6px;
 }
-header #contact{
-    color: orange;
-    border-bottom: 2px solid;
-    padding-bottom: 6px;
-}
-header #about{
-    color: orange;
-    border-bottom: 2px solid;
-    padding-bottom: 6px;
-}
 header{
     background-color: white;
     padding: 5px;
-    border: 1px solid gray;
+    border: 2px solid orange;
 }
 header img{
+    top: 5px;
     margin-top: -16px;
     position: relative;
     height: 50px;
@@ -31,7 +22,7 @@ header img{
 }
 header .row ul{
     position: absolute;
-    top: 9px;
+    top: 15px;
     left: 200px;
     margin-top: 2px;
 }
@@ -50,12 +41,10 @@ header a{
     margin-top: -10px;
 }
 .become{
-    position: absolute;
-    right: -20px;
-    top: -7px;
+    border-radius: 5px;
     color: white;
     background-color: orange;
-    padding: 5px 10px;
+    padding: 10px;
 }
 .find{
     background-image: url("../image/184239.jpg");
@@ -96,7 +85,7 @@ header a{
     color: white;
     border-radius: 50px;
     padding: 4px 10px;
-    margin-left: -25px;
+    margin-left: 5px;
 }
 .tour a{
     background-color: orange;
@@ -105,6 +94,9 @@ header a{
 }
 .tour a:hover{
     color: rgb(250, 229, 229);
+}
+.why {
+    margin: 30px 0;
 }
 .why h1{
     text-align: center;
@@ -142,14 +134,11 @@ header a{
 footer .row .col-md-4 img{
     height: 50px;
     width: 200px;
-    margin-left: 75px;
 }
 .row h1{
     font-size: 20px;
 }
-.face{
-    font-size: 35px;
-}
+
 .face a{
     margin: 7px;
     text-decoration: none;
@@ -168,22 +157,16 @@ footer .row .col-md-4 img{
     padding-left: 28px;
 }
 .ig{
-    border-radius: 7px;
-    padding-left: 5px;
-    padding-right: 5px;
+    border-radius: 15px;
+    padding-top: 22px;
     color: #fff;
-    vertical-align: middle;
-    background: #d6249f;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
     box-shadow: 0px 3px 10px rgba(0,0,0,.25);
 }
 .colu3{
     padding-left: 88px;
 }
-.col-md-4 h5{
-    float: left;
-    margin-left: 185px;
-}
+
 .col-md-4 form{
     margin-top: 9px;
 }
@@ -192,13 +175,18 @@ footer .row .col-md-4 img{
 }
 .col-md-4 .title{
     display: inline-block;
-    margin-top: -15px;
     margin-left: 122px;
+}
+.title {
+    float: right;
 }
 .title span{
     font-size: 11px;
     font-style: italic;
     color: gray;
+    text-align: right;
+    padding: 0;
+    text-align: center;
 }
 .bold{
     font-weight: bold;
@@ -207,7 +195,7 @@ footer .row .col-md-4 img{
     font-weight: lighter;
 }
 footer .row{
-    border: 2px solid gray;
+    border: 2px solid orange;
     margin-top: 40px;
 }
 .middle{
