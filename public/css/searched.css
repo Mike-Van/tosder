@@ -27,9 +27,8 @@ header a{
     color: white;
 }
 .locat {
-    top: -15px;
-    width: 170px;
-    background-color: orange;
+    top: -16px;
+    width: 25%;
     position: absolute;
     left: 240px;
     padding: 1px;
@@ -37,13 +36,12 @@ header a{
     font-size: 18px;
 }
 .locat i{
-    float: left;
-    margin-top: 20px;
     color: black;
 }
-.locat p{
-    margin-top: 15px;
+.locat span{
     color: black;
+    background: orange;
+    padding: 20px 4px;
 }
 .you{
     margin-top: -35px;
@@ -68,9 +66,7 @@ section .row .col-md-4 a{
     border-radius: 50px;
     margin-left: -40px;
 }
-section .row .col{
-    text-align: center;
-}
+
 .col-md-8 a{
     color: black;
 }
