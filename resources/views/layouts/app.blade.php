@@ -41,8 +41,10 @@
                     @if(isset($onGuest))
                     <div class="locat">
                         <a href="{{ route('allTours', $province_id) }}">
-                            <i class="fas fa-compass"></i>
-                            <p>&nbsp;{{ $province->name }}</p>
+                            
+                            <span class="fas fa-compass">
+                                &nbsp;{{ $province->name }}
+                            </span>
                         </a>
                     </div>
                     @else
@@ -119,7 +121,7 @@
                     </div>
                 </div>
                 <div class="col-6 col-md-4" style="text-align: center;">
-                    <img src="image/logo.PNG">
+                    <img src="/image/logo.PNG">
                     <br>
                     <h3>&copy; 2018 TosDer All right reserved.</h3>
                 </div>
