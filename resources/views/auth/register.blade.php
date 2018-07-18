@@ -25,10 +25,12 @@
         @csrf
         <input type="hidden" name="role" value="guide" >
         <input type="text" required placeholder="First Name" name="firstName">
+        <br>
         <input type="text" required placeholder="Last Name" name="lastName">
         <br>
         <input type="text" disabled class="tel" value="+855">
         <input type="text" required class="num" placeholder="XX-XXX-XXX" name="phone">
+        <br>
         <input type="text" required class="em" placeholder="Email Address" name="email">
         <br>
         <p>I'll operate in</p>

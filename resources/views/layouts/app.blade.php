@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/tosder.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}">
     @yield('stylesheet')
 </head>
 
@@ -41,7 +41,7 @@
                     @if(isset($onGuest))
                     <div class="locat">
                         <a href="{{ route('allTours', $province_id) }}">
-                            
+
                             <span class="fas fa-compass">
                                 &nbsp;{{ $province->name }}
                             </span>
@@ -90,11 +90,13 @@
                 </div>
             </div>
         </header>
+    </div>
 
-        {{-- body content --}} 
-        @yield('content') 
-        
-        {{-- footer content --}}
+    {{-- body content --}}
+    @yield('content')
+
+    {{-- footer content --}}
+    <div class="container-fluid">
         <footer>
             <div class="row">
                 <div class="col-6 col-md-4">

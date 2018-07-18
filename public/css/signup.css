@@ -19,6 +19,7 @@ haeder img{
     left: 7%;
     line-height: 25px;
     z-index: 102;
+    width: 340px
 }
 .namf h1{
     font-weight: bold;
@@ -36,7 +37,7 @@ haeder img{
 .namf input{
     padding: 8px;
     margin-bottom: 15px;
-    width: 49%;
+    width: 100%;
     border-radius: 3px;
     border: 1px solid gray;
     border-top: none;
@@ -45,6 +46,7 @@ haeder img{
 .namf input[type="file"] {
     border: none;
     padding: 8px 0;
+    width: 300px;
 }
 .namf textarea{
     margin-bottom: 15px;
@@ -59,6 +61,7 @@ haeder img{
     border: none;
     border-radius: 3px;
     font-size: 15px;
+    float: right;
 }
 .namf h2.or{
     color: orange;
@@ -69,13 +72,10 @@ haeder img{
     font-weight: 550;
 }
 .namf .tel{
-    width: 13%;
+    width: 22%;
 }
 .namf .num{
-    width: 26%;
-}
-.namf .em{
-    width: 230px;
+    width: 76%;
 }
 .namf span{
     font-weight: lighter;
@@ -89,7 +89,7 @@ haeder img{
 }
 .namf select{
     margin-bottom: 15px;
-    width: 275px;
+    width: 185px;
 }
 .namf .upload{
     width: 205%;
