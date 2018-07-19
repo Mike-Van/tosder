@@ -40,7 +40,7 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Historical and cultural sites")
-                                <div class="col">
+                                <div class="col-3">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
                                         <span class="tours">{{ $tour->name }}</span><br>
@@ -63,7 +63,7 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Natural and wilderness site")
-                                <div class="col">
+                                <div class="col-3">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
                                         <span class="tours">{{ $tour->name }}</span><br>
@@ -86,7 +86,7 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Chilling out and nightlife")
-                                <div class="col">
+                                <div class="col-3">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
                                         <span class="tours">{{ $tour->name }}</span><br>
@@ -109,7 +109,7 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Others")
-                                <div class="col">
+                                <div class="col-3">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
                                         <span class="tours">{{ $tour->name }}</span><br>

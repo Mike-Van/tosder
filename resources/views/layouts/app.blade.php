@@ -19,12 +19,13 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/tosder.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.0.13/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css') }}">
     @yield('stylesheet')
 </head>

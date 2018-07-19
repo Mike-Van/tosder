@@ -2,6 +2,13 @@
     margin: 0;
     padding: 0;
 }
+.custom-font {
+    font-family: "Segoe UI";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
 * {
     box-sizing: border-box;
 }
