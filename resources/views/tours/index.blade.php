@@ -35,19 +35,18 @@
                         <i class="fas fa-search"></i>
                     </a>
                 </div>
-                <div class="col-12 col-md-8">
+                <div class="col-6 col-md-8">
                     <h1 class="bold">Historical and cultural sites</h1>
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Historical and cultural sites")
-                                <div class="col-3">
+                                <div class="col-3" style="text-align: center;">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
-                                        <span class="tours">{{ $tour->name }}</span><br>
-                                        <span class="cast">From:
+                                        <h6 class="tours">{{ $tour->name }}</h6>
+                                        <p class="cast">From:
                                                 <b>{{ $tour->price }}KHR</b>
-                                            </span>
-                                        <br>
+                                            </p>
                                         <i>
                                                 <span class="guide">
                                                     <b>By:</b>
@@ -63,14 +62,13 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Natural and wilderness site")
-                                <div class="col-3">
+                                <div class="col-3" style="text-align: center;">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
-                                        <span class="tours">{{ $tour->name }}</span><br>
-                                        <span class="cast">From:
+                                        <h6 class="tours">{{ $tour->name }}</h6>
+                                        <p class="cast">From:
                                                 <b>{{ $tour->price }}KHR</b>
-                                            </span>
-                                        <br>
+                                            </p>
                                         <i>
                                                 <span class="guide">
                                                     <b>By:</b>
@@ -86,14 +84,13 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Chilling out and nightlife")
-                                <div class="col-3">
+                                <div class="col-3" style="text-align: center;">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
-                                        <span class="tours">{{ $tour->name }}</span><br>
-                                        <span class="cast">From:
+                                        <h6 class="tours">{{ $tour->name }}</h6>
+                                        <p class="cast">From:
                                                 <b>{{ $tour->price }}KHR</b>
-                                            </span>
-                                        <br>
+                                            </p>
                                         <i>
                                                 <span class="guide">
                                                     <b>By:</b>
@@ -109,14 +106,14 @@
                     <div class="row">
                         @foreach($tours as $tour)
                             @if($tour->category == "Others")
-                                <div class="col-3">
+                                <div class="col-3" style="text-align: center;">
                                     <a href="{{ route('tours.show', $tour->id) }}">
                                         <img src="/storage/{{ $tour->latestTourImage->path }}" alt="">
-                                        <span class="tours">{{ $tour->name }}</span><br>
-                                        <span class="cast">From:
+                                        <h6 class="tours">{{ $tour->name }}</h6>
+                                        <p class="cast">From:
                                                 <b>{{ $tour->price }}KHR</b>
-                                            </span>
-                                        <br>
+                                        </p>
+
                                         <i>
                                                 <span class="guide">
                                                     <b>By:</b>

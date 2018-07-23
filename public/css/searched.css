@@ -83,13 +83,11 @@ section .row .col-6 .col-md-4{
     margin-left: -75px;
 }
 section .row .col-md-8 img{
-    width: 125px
+    width: 100%;
+    height: 120px;
 }
-.tours{
-    font-size: 12px;
-}
+
 .cast{
-    font-size: 11px;
     margin-top: 4px;
 }
 .guide{

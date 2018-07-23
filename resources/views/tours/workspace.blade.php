@@ -165,8 +165,8 @@
                         <div class="col-3">
                             <a href="{{ route('tours.edit', $tour->id) }}">
                                 <img src="/storage/{{ $tour->latestTourImage->path }}" />
-                                <p>{{ $tour->name }}</p>
-                                <span>From {{ $tour->price }}KHR</span>
+                                <h6>{{ $tour->name }}</h6>
+                                <p>From {{ $tour->price }}KHR</p>
                             </a>
                         </div>
                         @endforeach

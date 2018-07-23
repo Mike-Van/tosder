@@ -10,7 +10,7 @@
     if(isset($_GET['province_id']))
         return redirect();
 ?>
-<div class="bodz">
+<div class="bodz container-fluid">
     <section>
         <div class="find">
             <h1>Let

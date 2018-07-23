@@ -71,7 +71,7 @@
                         @elseif(Auth::user()->role == "admin")
                             <a href="{{ route('provinces.index') }}" class="become">Province listing</a>
                         @endif
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            <a id="navbarDropdown" style="display: inline;" class="nav-link dropdown-toggle become" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" v-pre>
                                 {{ Auth::user()->firstName }}
                                 <i class="caret"></i>
