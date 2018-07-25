@@ -15,7 +15,7 @@ class AddForeignKeyToUser extends Migration
     {
         //
         Schema::table('users', function($table) {
-            $table->integer('province_id')->unsigned()->nullable();
+            $table->integer('province_id')->nullable();
             $table->foreign('province_id')->references('id')->on('provinces');
         });
     }
