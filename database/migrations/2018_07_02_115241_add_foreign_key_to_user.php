@@ -28,6 +28,8 @@ class AddForeignKeyToUser extends Migration
     public function down()
     {
         //
-        $table->dropColumn('province_id');
+        Schema::table('users', function($table) {
+            $table->dropColumn('province_id');
+        });
     }
 }
